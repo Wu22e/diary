@@ -1,6 +1,7 @@
 package network
 
 import (
+	"crud_server/types"
 	"fmt"
 	"sync"
 
@@ -34,16 +35,33 @@ func newUserRouter(router *Network) *userRouter {
 
 func (u *userRouter) create(c *gin.Context) {
 	fmt.Println("It's create")
+
+	u.router.okResponse(c, &types.CreateUserResponse{
+		ApiResponse: types.NewApiResponse("It's success", 1),
+	})
 }
 
 func (u *userRouter) get(c *gin.Context) {
 	fmt.Println("It's get")
+
+	u.router.okResponse(c, &types.GetUserResponse{
+		ApiResponse: types.NewApiResponse("It's success", 1),
+		User:        nil,
+	})
 }
 
 func (u *userRouter) update(c *gin.Context) {
 	fmt.Println("It's update")
+
+	u.router.okResponse(c, &types.UpdateUserResponse{
+		ApiResponse: types.NewApiResponse("It's success", 1),
+	})
 }
 
 func (u *userRouter) delete(c *gin.Context) {
 	fmt.Println("It's delete")
+
+	u.router.okResponse(c, &types.DeleteUserResponse{
+		ApiResponse: types.NewApiResponse("It's success", 1),
+	})
 }
