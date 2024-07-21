@@ -1,6 +1,7 @@
 package network
 
 import (
+	"crud_server/service"
 	"crud_server/types"
 	"fmt"
 	"sync"
@@ -16,12 +17,14 @@ var (
 type userRouter struct {
 	router *Network
 	// service
+	userService *service.User
 }
 
-func newUserRouter(router *Network) *userRouter {
+func newUserRouter(router *Network, userService *service.User) *userRouter {
 	userRouterInit.Do(func() {
 		userRouterInstance = &userRouter{
-			router: router,
+			router:      router,
+			userService: userService,
 		}
 
 		router.registerPOST("/", userRouterInstance.create)

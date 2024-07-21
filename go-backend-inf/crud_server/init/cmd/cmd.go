@@ -3,24 +3,28 @@ package cmd
 import (
 	"crud_server/config"
 	"crud_server/network"
-	"fmt"
+	"crud_server/repository"
+	"crud_server/service"
 )
 
 type Cmd struct {
-	config  *config.Config
-	network *network.Network
+	config *config.Config
+
+	network    *network.Network
+	repository *repository.Repository
+	service    *service.Service
 }
 
 func NewCmd(filePath string) *Cmd {
 	c := &Cmd{
-		config:  config.NewConfig(filePath),
-		network: network.NewNetwork(),
+		config: config.NewConfig(filePath),
 	}
 
-	c.network.ServerStart(c.config.Server.Port)
+	c.repository = repository.NewRepository()
+	c.service = service.NewService(c.repository)
+	c.network = network.NewNetwork(c.service)
 
-	// not reached until channel(gin network) close
-	fmt.Println(c.config.Server.Port)
+	c.network.ServerStart(c.config.Server.Port)
 
 	return c
 }
