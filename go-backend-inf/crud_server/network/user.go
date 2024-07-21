@@ -39,6 +39,8 @@ func newUserRouter(router *Network, userService *service.User) *userRouter {
 func (u *userRouter) create(c *gin.Context) {
 	fmt.Println("It's create")
 
+	u.userService.Create(nil)
+
 	u.router.okResponse(c, &types.CreateUserResponse{
 		ApiResponse: types.NewApiResponse("It's success", 1),
 	})
@@ -49,12 +51,14 @@ func (u *userRouter) get(c *gin.Context) {
 
 	u.router.okResponse(c, &types.GetUserResponse{
 		ApiResponse: types.NewApiResponse("It's success", 1),
-		User:        nil,
+		Users:       u.userService.Get(),
 	})
 }
 
 func (u *userRouter) update(c *gin.Context) {
 	fmt.Println("It's update")
+
+	u.userService.Update(nil, nil)
 
 	u.router.okResponse(c, &types.UpdateUserResponse{
 		ApiResponse: types.NewApiResponse("It's success", 1),
@@ -63,6 +67,8 @@ func (u *userRouter) update(c *gin.Context) {
 
 func (u *userRouter) delete(c *gin.Context) {
 	fmt.Println("It's delete")
+
+	u.userService.Delete(nil)
 
 	u.router.okResponse(c, &types.DeleteUserResponse{
 		ApiResponse: types.NewApiResponse("It's success", 1),

@@ -11,7 +11,7 @@ type CreateUserResponse struct {
 
 type GetUserResponse struct {
 	*ApiResponse
-	*User
+	User []*User `json:"result"`
 }
 
 type UpdateUserResponse struct {
@@ -20,5 +20,4 @@ type UpdateUserResponse struct {
 
 type DeleteUserResponse struct {
 	*ApiResponse
-	*User
 }
