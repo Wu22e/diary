@@ -1,13 +1,15 @@
 package types
 
 type ApiResponse struct {
-	Result      int64  `json:"result"` // 1 : success / -1 : fail
-	Description string `json:"description"`
+	ResultCode  int64       `json:"resultCode"` // 1 : success / -1 : fail
+	Description string      `json:"description"`
+	ErrorCode   interface{} `json:"errCode"`
 }
 
-func NewApiResponse(description string, result int64) *ApiResponse {
+func NewApiResponse(description string, resultCode int64, errCode interface{}) *ApiResponse {
 	return &ApiResponse{
-		Result:      result,
+		ResultCode:  resultCode,
 		Description: description,
+		ErrorCode:   errCode,
 	}
 }

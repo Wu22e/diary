@@ -19,12 +19,12 @@ func (u *User) Create(newUser *types.User) error {
 	return u.userRepository.Create(newUser)
 }
 
-func (u *User) Update(beforeUser *types.User, updatedUser *types.User) error {
-	return u.userRepository.Update(beforeUser, updatedUser)
+func (u *User) Update(name string, newAge int64) error {
+	return u.userRepository.Update(name, newAge)
 }
 
 func (u *User) Delete(user *types.User) error {
-	return u.userRepository.Delete(user)
+	return u.userRepository.Delete(user.Name)
 }
 
 func (u *User) Get() []*types.User {
