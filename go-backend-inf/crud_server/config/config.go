@@ -3,7 +3,7 @@ package config
 import (
 	"os"
 
-	"github.com/BurntSushi/toml"
+	"github.com/naoina/toml"
 )
 
 // node .env
@@ -11,7 +11,7 @@ import (
 
 type Config struct {
 	Server struct {
-		Port int64
+		Port string
 	}
 }
 
