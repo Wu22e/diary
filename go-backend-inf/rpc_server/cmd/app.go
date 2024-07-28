@@ -27,6 +27,6 @@ func NewApp(cfg *config.Config) {
 	} else if a.network, err = network.NewNetwork(cfg, a.service); err != nil {
 		panic(err)
 	} else {
-		// TODO -> start server
+		a.network.StartServer()
 	}
 }
