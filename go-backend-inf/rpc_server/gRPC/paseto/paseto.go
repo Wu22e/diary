@@ -2,6 +2,7 @@ package paseto
 
 import (
 	"rpc_server/config"
+	auth "rpc_server/gRPC/proto"
 
 	"github.com/o1egl/paseto"
 )
@@ -18,7 +19,7 @@ func NewPasetoMaker(cfg *config.Config) *PasetoMaker {
 	}
 }
 
-func (m *PasetoMaker) CreateNewToken() (string, error) {
+func (m *PasetoMaker) CreateNewToken(auth *auth.AuthData) (string, error) {
 	return "", nil
 }
 
