@@ -16,3 +16,7 @@ func NewService(cfg *config.Config, repository *repository.Repository) (*Service
 
 	return s, nil
 }
+
+func (s *Service) CreateAuth(name string) (interface{}, error) {
+	return s.repository.CreateAuth(name)
+}
