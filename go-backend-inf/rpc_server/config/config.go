@@ -6,7 +6,11 @@ import (
 	"github.com/naoina/toml"
 )
 
-type Config struct{}
+type Config struct {
+	Paseto struct {
+		Key string
+	}
+}
 
 func NewConfig(path string) *Config {
 	c := new(Config)
