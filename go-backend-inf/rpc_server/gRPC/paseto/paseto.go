@@ -11,7 +11,7 @@ type PasetoMaker struct {
 	Key []byte
 }
 
-func NewPasetoMaker(cfg config.Config) *PasetoMaker {
+func NewPasetoMaker(cfg *config.Config) *PasetoMaker {
 	return &PasetoMaker{
 		Pt:  paseto.NewV2(),
 		Key: []byte(cfg.Paseto.Key),
